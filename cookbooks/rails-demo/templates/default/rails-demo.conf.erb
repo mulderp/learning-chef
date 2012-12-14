@@ -1,6 +1,6 @@
 <VirtualHost *:80>
   ServerAdmin <%= node['apache']['contact'] %>
-  RackEnv development
+  RackEnv <%= node['rackenv'] %>
 
   DocumentRoot /var/www/rails-apps/rails-demo/current/public
   <Directory />
