@@ -1,0 +1,19 @@
+{
+  "name": "application",
+  "description": "application servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+  },
+  "override_attributes": {
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[xml]",
+    "recipe[git]",
+    "recipe[nodejs]",
+    "recipe[passenger_apache2]",
+    "recipe[rails-demo]"
+  ],
+  "env_run_lists": {
+  }
+}

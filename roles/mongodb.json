@@ -1,0 +1,15 @@
+{
+  "name": "mongodb",
+  "description": "mongdb servers",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+  },
+  "override_attributes": {
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[mongodb]"
+  ],
+  "env_run_lists": {
+  }
+}
