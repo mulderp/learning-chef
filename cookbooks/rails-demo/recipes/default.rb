@@ -17,3 +17,11 @@ application "rails-demo" do
   end
   passenger_apache2
 end
+
+template "/var/www/rails-apps/rails-demo/shared/config/mongoid.yml" do
+  owner "vagrant"
+  group "vagrant"
+  variables(
+    :mongodb_host => "192.168.1.20"
+  )
+end
