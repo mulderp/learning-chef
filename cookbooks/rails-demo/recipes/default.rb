@@ -18,6 +18,12 @@ application "rails-demo" do
   passenger_apache2
 end
 
+directory "/var/www/rails-apps/rails-demo/shared/config" do
+  owner "vagrant"
+  group "vagrant"
+  recursive true
+end
+
 template "/var/www/rails-apps/rails-demo/shared/config/mongoid.yml" do
   owner "vagrant"
   group "vagrant"
@@ -25,3 +31,4 @@ template "/var/www/rails-apps/rails-demo/shared/config/mongoid.yml" do
     :mongodb_host => "192.168.1.20"
   )
 end
+
