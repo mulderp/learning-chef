@@ -8,16 +8,20 @@
 #
 #
 
-node.default['rbenv']['rubies'] = [ "1.9.3-p0" ]
-
-include_recipe "rbenv::system"
-include_recipe "ruby_build"
-
-rbenv_global "1.9.3-p0"
-
-node.default['rbenv']['gems'] = {
-  '1.9.3-p0' => [ { 
+node.default['rbenv']['user_installs'] = [ 
+  {'user' => 'vagrant',
+   'rubies' => ["1.9.3-p0"],
+   'global' => "1.9.3-p0",
+   'gems' => {
+      '1.9.3-p0' => [ { 
     'name'    => 'bundler', 
     'version' => '1.1.rc.5' } ]
+  }
 }
 
+]
+
+include_recipe "ruby_build"
+include_recipe "rbenv::user"
+
+#rbenv_global "1.9.3-p0"
