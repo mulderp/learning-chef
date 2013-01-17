@@ -12,6 +12,9 @@
     "recipe[git]",
     "recipe[nodejs]",
     "recipe[passenger_apache2]",
+    "recipe[chef-rbenv]",
+    "recipe[chef-ruby_build]",
+    "recipe[passenger_apache2]",
     "recipe[rails-demo]"
   ],
   "env_run_lists": {
