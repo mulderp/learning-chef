@@ -12,8 +12,9 @@ Vagrant::Config.run do |config|
       chef.chef_server_url = "https://api.opscode.com/organizations/fidor"
       chef.validation_key_path = "./.chef/fidor-validator.pem"
       chef.validation_client_name = "fidor-validator"
-      chef.node_name = "patrick_web_vm1"
-      chef.log_level = "debug"
+      chef.node_name = "patrick_web_vm_1"
+      chef.add_role "base"
+      chef.add_role "application"
     end
   end
 
@@ -27,7 +28,9 @@ Vagrant::Config.run do |config|
       chef.chef_server_url = "https://api.opscode.com/organizations/fidor"
       chef.validation_key_path = "./.chef/fidor-validator.pem"
       chef.validation_client_name = "fidor-validator"
-      chef.node_name = "patrick_mongo_vm"
+      chef.node_name = "patrick_mongo_vm_1"
+      chef.add_role "base"
+      chef.add_role "mongodb"
     end
   end
 end

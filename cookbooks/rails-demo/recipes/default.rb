@@ -7,17 +7,6 @@
 # All rights reserved - Do Not Redistribute
 #
 #
-application "rails-demo" do
-  path "/var/www/rails-apps/rails-demo"
-  owner "vagrant"
-  group "vagrant"
-  repository "http://github.com/mulderp/chef-demo.git"
-  rails do 
-    bundler true
-  end
-  passenger_apache2
-end
-
 directory "/var/www/rails-apps/rails-demo/shared/config" do
   owner "vagrant"
   group "vagrant"
@@ -31,4 +20,17 @@ template "/var/www/rails-apps/rails-demo/shared/config/mongoid.yml" do
     :mongodb_host => "192.168.1.20"
   )
 end
+
+application "rails-demo" do
+  path "/var/www/rails-apps/rails-demo"
+  owner "vagrant"
+  group "vagrant"
+  repository "http://github.com/mulderp/chef-demo.git"
+  rails do 
+    bundler true
+  end
+  symlinks "config/mongoid.yml" => "config/mongoid.yml"  
+  passenger_apache2
+end
+
 
