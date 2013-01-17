@@ -8,14 +8,16 @@
 #
 #
 
-include_recipe "chef-ruby_build"
-include_recipe "chef-rbenv"
+node.default['rbenv']['rubies'] = [ "1.9.3-p0" ]
 
-ruby_build_ruby :default do
-  definition "1.9.3-p362"
-  prefix_path "/usr/local/ruby/ruby-1.9.3-p362"
+include_recipe "rbenv::system"
+include_recipe "ruby_build"
 
-  action :install
-end
+rbenv_global "1.9.3-p0"
 
-rbenv_global "1.9.3-p362"
+node.default['rbenv']['gems'] = {
+  '1.9.3-p0' => [ { 
+    'name'    => 'bundler', 
+    'version' => '1.1.rc.5' } ]
+}
+

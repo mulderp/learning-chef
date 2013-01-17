@@ -1,6 +1,6 @@
 {
-  "name": "application",
-  "description": "application servers",
+  "name": "development",
+  "description": "development servers",
   "json_class": "Chef::Role",
   "default_attributes": {
   },
@@ -10,9 +10,7 @@
   "run_list": [
     "recipe[xml]",
     "recipe[git]",
-    "recipe[nodejs]",
-    "recipe[passenger_apache2]",
-    "recipe[rails-demo]"
+    "recipe[fidor_rubies]"
   ],
   "env_run_lists": {
   }
