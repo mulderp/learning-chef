@@ -1,0 +1,29 @@
+<VirtualHost *:80>
+  ServerAdmin <%= node['apache']['contact'] %>
+  RackEnv <%= node['rackenv'] %>
+
+  DocumentRoot /var/www/rails-apps/rails-demo/current/public
+  <Directory />
+  Options FollowSymLinks
+  AllowOverride None
+  </Directory>
+  <Directory /var/www/rails-apps/rails-demo/current/public>
+  Options Indexes FollowSymLinks MultiViews
+  AllowOverride None
+  Order allow,deny
+  allow from all
+  # This directive allows us to have apache2's default start page
+  # in /apache2-default/, but still have / go to the right place
+  #RedirectMatch ^/$ /apache2-default/
+  </Directory>
+  ErrorLog <%= node['apache']['log_dir'] %>/demo-error.log
+
+  # Possible values include: debug, info, notice, warn, error, crit,
+  # alert, emerg.
+  LogLevel warn
+
+  CustomLog <%= node['apache']['log_dir'] %>/demo-access.log combined
+  ServerSignature On
+
+
+</VirtualHost>
