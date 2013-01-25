@@ -7,6 +7,10 @@
 # All rights reserved - Do Not Redistribute
 #
 #
+
+include_recipe "imagemagick"
+include_recipe "imagemagick::rmagick"
+
 directory "/var/www/rails-apps/locomotivecms/shared/config" do
   owner "vagrant"
   group "vagrant"

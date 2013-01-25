@@ -11,8 +11,7 @@
     "recipe[xml]",
     "recipe[git]",
     "recipe[nodejs]",
-    "recipe[passenger_apache2]",
-    "recipe[rails-demo]"
+    "recipe[passenger_apache2]"
   ],
   "env_run_lists": {
   }

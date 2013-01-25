@@ -2,12 +2,12 @@
   ServerAdmin <%= node['apache']['contact'] %>
   RackEnv <%= node['rackenv'] %>
 
-  DocumentRoot /var/www/rails-apps/rails-demo/current/public
+  DocumentRoot /var/www/rails-apps/locomotivecms/current/public
   <Directory />
   Options FollowSymLinks
   AllowOverride None
   </Directory>
-  <Directory /var/www/rails-apps/rails-demo/current/public>
+  <Directory /var/www/rails-apps/locomotivecms/current/public>
   Options Indexes FollowSymLinks MultiViews
   AllowOverride None
   Order allow,deny
