@@ -13,8 +13,10 @@ Vagrant::Config.run do |config|
       chef.validation_key_path = "./.chef/fidor-validator.pem"
       chef.validation_client_name = "fidor-validator"
       chef.node_name = "patrick_web_vm_1"
+      chef.knife_config = './.chef/knife.rb'
       chef.add_role "base"
       chef.add_role "application"
+      chef.add_recipe "locomotive-cms"
     end
   end
 
