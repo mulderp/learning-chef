@@ -2,37 +2,20 @@
 # vi: set ft=ruby :
 
 Vagrant::Config.run do |config|
-  config.vm.define :web do |web_config|
-    web_config.vm.box = "web"
-    web_config.vm.box_url = "https://opscode-vm.s3.amazonaws.com/vagrant/boxes/opscode-ubuntu-12.04.box"
-    web_config.vm.network :hostonly, "192.168.1.10"
-    web_config.vm.forward_port 80, 8080
 
-    web_config.vm.provision :chef_client do |chef|
+  config.vm.define :pg do |pg_config|
+    pg_config.vm.box = "pg"
+    pg_config.vm.box_url = "https://opscode-vm.s3.amazonaws.com/vagrant/boxes/opscode-ubuntu-12.04.box"
+    pg_config.vm.network :hostonly, "192.168.1.20"
+    pg_config.vm.forward_port 5432, 5432
+
+    pg_config.vm.provision :chef_client do |chef|
       chef.chef_server_url = "https://api.opscode.com/organizations/fidor"
       chef.validation_key_path = "./.chef/fidor-validator.pem"
       chef.validation_client_name = "fidor-validator"
-      chef.node_name = "patrick_web_vm_1"
-      chef.knife_config = './.chef/knife.rb'
+      chef.node_name = "patrick_pg_vm_1"
       chef.add_role "base"
-      chef.add_role "application"
-      chef.add_recipe "locomotive-cms"
-    end
-  end
-
-  config.vm.define :mongo do |mongo_config|
-    mongo_config.vm.box = "mongo"
-    mongo_config.vm.box_url = "https://opscode-vm.s3.amazonaws.com/vagrant/boxes/opscode-ubuntu-12.04.box"
-    mongo_config.vm.network :hostonly, "192.168.1.20"
-    mongo_config.vm.forward_port 27017, 27018
-
-    mongo_config.vm.provision :chef_client do |chef|
-      chef.chef_server_url = "https://api.opscode.com/organizations/fidor"
-      chef.validation_key_path = "./.chef/fidor-validator.pem"
-      chef.validation_client_name = "fidor-validator"
-      chef.node_name = "patrick_mongo_vm_1"
-      chef.add_role "base"
-      chef.add_role "mongodb"
+      chef.add_recipe "fidor_postgres"
     end
   end
 end
