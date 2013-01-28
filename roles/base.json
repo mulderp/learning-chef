@@ -8,8 +8,7 @@
   },
   "chef_type": "role",
   "run_list": [
-    "recipe[apt]",
-    "recipe[omnibus_updater]"
+    "recipe[apt]"
   ],
   "env_run_lists": {
   }
