@@ -4,7 +4,7 @@
 Vagrant::Config.run do |config|
   config.vm.define :web do |web_config|
     web_config.vm.box = "web"
-    web_config.vm.box_url = "https://opscode-vm.s3.amazonaws.com/vagrant/boxes/opscode-ubuntu-12.04.box"
+    web_config.vm.box_url = "https://opscode-vm.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_chef-10.18.2.box"
     web_config.vm.network :hostonly, "192.168.1.10"
     web_config.vm.forward_port 80, 8080
 
@@ -20,7 +20,7 @@ Vagrant::Config.run do |config|
 
   config.vm.define :mongo do |mongo_config|
     mongo_config.vm.box = "mongo"
-    mongo_config.vm.box_url = "https://opscode-vm.s3.amazonaws.com/vagrant/boxes/opscode-ubuntu-12.04.box"
+    mongo_config.vm.box_url = "https://opscode-vm.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_chef-10.18.2.box"
     mongo_config.vm.network :hostonly, "192.168.1.20"
     mongo_config.vm.forward_port 27017, 27018
 
